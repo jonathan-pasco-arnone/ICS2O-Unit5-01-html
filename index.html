@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="My 6th webpage">
+    <meta name="keywordss" content="Hello, World! website">
+    <meta name="author" content="Jonathan Pasco-Arnone">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My webpage</title>
+  </head>
+  <body>
+    <h2>Pick a number from 1 to 6</h2>
+    <form>
+      <input id="viewer-guess-id">
+    </form><br>
+    <button id="rand-guess">Submit</button>
+    <h2 id="answer"></h2>
+    <button id="reset-button-id">Reset</button>
+    <script>
+    let viewerGuess;
+    let compGuess;
+    function CompGuessFunction() {
+      document.getElementById("answer").style.visibility="visible";
+      document.getElementById("rand-guess").style.visibility="hidden";
+      document.getElementById("reset-button-id").style.visibility="visible";
+      viewerGuess = document.getElementById("viewer-guess-id").value;
+      compGuess = Math.floor(Math.random() * 6 + 1);
+      if (compGuess == viewerGuess) {
+        document.getElementById("answer").innerHTML = ("Congratulations, you guessed the correct number" + "<br><br>" + "Play Again?");
+      } else {
+      document.getElementById("answer").innerHTML = ("Wrong the correct answer was " + compGuess + "<br><br>" + "Try Again?");
+      }}
+    function Reset() {
+      document.getElementById("rand-guess").style.visibility="visible";
+      document.getElementById("answer").style.visibility="hidden";
+      document.getElementById("reset-button-id").style.visibility="hidden";
+      document.getElementById("viewer-guess-id").value = "";
+    }
+    document.getElementById("rand-guess").addEventListener("click",CompGuessFunction);
+    document.getElementById("reset-button-id").addEventListener("click",Reset);
+    document.getElementById("reset-button-id").style.visibility="hidden";
+    </script>
+  </body>
+</html>
